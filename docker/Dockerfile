@@ -30,7 +30,7 @@ RUN mkdir ${HOME}/tools
 
 WORKDIR ${HOME}/tools/
 
-RUN wget https://github.com/gt1/biobambam2/releases/download/2.0.25-release-20151105154334/biobambam2-2.0.25-release-20151105154334-x86_64-etch-linux-gnu.tar.gz
+RUN wget https://github.com/gt1/biobambam2/releases/download/2.0.25-release-20151105154334/biobambam2-2.0.25-release-20151105154334-x86_64-etch-linux-gnu.tar.gz \
     && tar xf biobambam2-2.0.25-release-20151105154334-x86_64-etch-linux-gnu.tar.gz \
     && mv biobambam2-2.0.25-release-20151105154334-x86_64-etch-linux-gnu biobambam2 \
     && rm *.tar.gz
