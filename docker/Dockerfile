@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:15.10
 
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
 
@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --force-yes \
     python-virtualenv \
     python3-dev \
     software-properties-common \
+    sudo \
     time \
     wget
 
