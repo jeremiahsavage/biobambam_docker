@@ -37,6 +37,7 @@ RUN wget https://github.com/gt1/biobambam2/releases/download/2.0.25-release-2015
     && rm *.tar.gz
 RUN mkdir -p ${HOME}/.local/
 RUN mv ${HOME}/tools/biobambam/* ${HOME}/.local/
+ENV PATH ${HOME}/.local/bin:$PATH
 
 WORKDIR ${HOME}
 
