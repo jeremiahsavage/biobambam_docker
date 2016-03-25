@@ -2,6 +2,8 @@ FROM quay.io/jeremiahsavage/cdis_base
 
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
 
+USER root
+
 RUN apt-get update && apt-get install -y --force-yes \
     wget
 
