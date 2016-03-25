@@ -33,10 +33,3 @@ RUN mv ${HOME}/tools/biobambam/* ${HOME}/.local/
 ENV PATH ${HOME}/.local/bin:$PATH
 
 WORKDIR ${HOME}
-
-RUN pip install --user virtualenvwrapper \
-    && /bin/bash -c "source ${HOME}/.local/bin/virtualenvwrapper.sh \
-    && mkvirtualenv --python=/usr/bin/python3 p3 \
-    && pip install --upgrade ipython pandas sqlalchemy \
-    && echo source ${HOME}/.local/bin/virtualenvwrapper.sh >> ${HOME}/.bashrc \
-    && echo source ${HOME}/.virtualenvs/p3/bin/activate >> ${HOME}/.bashrc"
