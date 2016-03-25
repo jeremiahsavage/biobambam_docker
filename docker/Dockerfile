@@ -1,20 +1,12 @@
-FROM ubuntu:15.10
+FROM quay.io/jeremiahsavage/cdis_base
 
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
-
-USER root
-
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update \
-    && apt-get dist-upgrade -y --force-yes
 
 RUN apt-get update && apt-get install -y --force-yes \
     wget
 
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN adduser --disabled-password --gecos '' ubuntu && adduser ubuntu sudo && echo "ubuntu	ALL=(ALL)	NOPASSWD:ALL" >> /etc/sudoers.d/ubuntu
 
 USER ubuntu
 
