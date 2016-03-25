@@ -9,13 +9,6 @@ RUN apt-get update \
     && apt-get dist-upgrade -y --force-yes
 
 RUN apt-get update && apt-get install -y --force-yes \
-    git \
-    python-pip \
-    python-virtualenv \
-    python3-dev \
-    software-properties-common \
-    sudo \
-    time \
     wget
 
 RUN apt-get clean \
