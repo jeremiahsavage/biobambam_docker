@@ -1,6 +1,6 @@
 FROM quay.io/jeremiahsavage/cdis_base
 
-ENV biobambam_docker 0.2
+ENV biobambam_docker 0.3
 
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
 
