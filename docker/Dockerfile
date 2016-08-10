@@ -1,4 +1,4 @@
-FROM ubuntu:xenial-20160809
+FROM ubuntu:xenial-20160713
 
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
 
