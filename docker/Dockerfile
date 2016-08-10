@@ -20,3 +20,5 @@ RUN wget https://github.com/gt1/biobambam2/releases/download/2.0.54-release-2016
     && mv biobambam2/* ./ \
     && rmdir biobambam2 \
     && rm *.tar.gz
+
+WORKDIR /root
