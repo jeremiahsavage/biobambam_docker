@@ -8,6 +8,8 @@ RUN echo 'Acquire::http::Proxy "http://cloud-proxy:3128";' >> /etc/apt/apt.conf.
     && apt-get install -y wget \
     && apt-get clean \
     && rm -rf /usr/local/* \
+    && export http_proxy=http://cloud-proxy:3128 \
+    && export https_proxy=http://cloud-proxy:3128 \
     && wget https://github.com/gt1/biobambam2/releases/download/2.0.57-release-20160918185932/biobambam2-2.0.57-release-20160918185932-x86_64-etch-linux-gnu.tar.gz \
     && tar xf biobambam2-2.0.57-release-20160918185932-x86_64-etch-linux-gnu.tar.gz \
     && mv biobambam2-2.0.57-release-20160918185932-x86_64-etch-linux-gnu/* /usr/local/ \
