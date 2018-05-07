@@ -3,7 +3,7 @@ FROM ubuntu:bionic-20180426
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
 
 RUN apt-get update \
-    && apt-get install -y
+    && apt-get install -y \
        autoconf \
        g++ \
        libtool \
