@@ -1,13 +1,36 @@
-FROM ubuntu:artful-20171019
+FROM ubuntu:bionic-20180426
 
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
 
 RUN apt-get update \
-    && apt-get install -y wget \
+    && apt-get install -y
+       autoconf \
+       g++ \
+       libtool \
+       pkg-config \
+       wget \
+       zlib1g-dev \
     && apt-get clean \
     && rm -rf /usr/local/* \
-    && wget https://github.com/gt1/biobambam2/releases/download/2.0.87-release-20180301132713/biobambam2-2.0.87-release-20180301132713-x86_64-etch-linux-gnu.tar.gz \
-    && tar xf biobambam2-2.0.87-release-20180301132713-x86_64-etch-linux-gnu.tar.gz \
-    && mv biobambam2/2.0.87-release-20180301132713/x86_64-etch-linux-gnu/* /usr/local/ \
-    && rm -rf biobambam* \
+    && wget https://github.com/gt1/libmaus2/archive/2.0.483-release-20180507173657.tar.gz \
+    && wget https://github.com/gt1/biobambam2/archive/2.0.87-release-20180301132713.tar.gz \
+    && tar xf 2.0.483-release-20180507173657.tar.gz \
+    && cd libmaus2-2.0.483-release-20180507173657 \
+    && libtoolize \
+    && aclocal \
+    && autoreconf -i -f \
+    && ./configure \
+    && make \
+    && make install \
+    && cd ../ \
+    && rm -rf libmaus2-2.0.483-release-20180507173657 2.0.483-release-20180507173657.tar.gz \
+    && tar xf 2.0.87-release-20180301132713.tar.gz \
+    && cd biobambam2-2.0.87-release-20180301132713 \
+    && export LIBMAUSPREFIX=/usr/local \
+    && autoreconf -i -f \
+    && ./configure --with-libmaus2=${LIBMAUSPREFIX} \
+    && make \
+    && make install \
+    && cd ../ \
+    && rm -rf biobambam2-2.0.87-release-20180301132713 2.0.87-release-20180301132713.tar.gz \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
