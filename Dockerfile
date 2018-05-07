@@ -2,6 +2,8 @@ FROM ubuntu:bionic-20180426
 
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
 
+ENV LD_LIBRARY_PATH /usr/local/lib
+
 RUN apt-get update \
     && apt-get install -y \
        autoconf \
