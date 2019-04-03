@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20180426
+FROM ubuntu:disco-20190310
 
 MAINTAINER Jeremiah H. Savage <jeremiahsavage@gmail.com>
 
@@ -7,6 +7,7 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 RUN apt-get update \
     && apt-get install -y \
        autoconf \
+       git \
        g++ \
        libtool \
        pkg-config \
@@ -14,10 +15,11 @@ RUN apt-get update \
        zlib1g-dev \
     && apt-get clean \
     && rm -rf /usr/local/* \
-    && wget https://github.com/gt1/libmaus2/archive/2.0.483-release-20180507173657.tar.gz \
-    && wget https://github.com/gt1/biobambam2/archive/2.0.87-release-20180301132713.tar.gz \
-    && tar xf 2.0.483-release-20180507173657.tar.gz \
-    && cd libmaus2-2.0.483-release-20180507173657 \
+    && curl --silent https://gitlab.com/german.tischler/libmaus2/repository/archive.tar.gz\?ref\=2.0.610-release-20190328154814 -o libmaus2.tar.gz \
+    && curl --silent https://gitlab.com/german.tischler/biobambam2/repository/archive.tar.gz\?ref\=2.0.95-release-20190320141403 -o biobambam2.tar.gz \
+    && libmaus2files=$(tar -axvf libmaus2.tar.gz) \
+    && libmaus2dir=$(${libmaus2files} | cut -f1 -d" ") \
+    && cd ${libmaus2dir} \
     && libtoolize \
     && aclocal \
     && autoreconf -i -f \
@@ -25,14 +27,15 @@ RUN apt-get update \
     && make \
     && make install \
     && cd ../ \
-    && rm -rf libmaus2-2.0.483-release-20180507173657 2.0.483-release-20180507173657.tar.gz \
-    && tar xf 2.0.87-release-20180301132713.tar.gz \
-    && cd biobambam2-2.0.87-release-20180301132713 \
+    && rm -rf ${libmaus2dir} libmaus2.tar.gz \
+    && biobambam2files=$(tar -axvf biobambam2.tar.gz) \
+    && biobambam2dir=$(${biobambam2files} | cut -f1 -d" ") \
+    && cd biobambam2dir \
     && export LIBMAUSPREFIX=/usr/local \
     && autoreconf -i -f \
     && ./configure --with-libmaus2=${LIBMAUSPREFIX} \
     && make \
     && make install \
     && cd ../ \
-    && rm -rf biobambam2-2.0.87-release-20180301132713 2.0.87-release-20180301132713.tar.gz \
+    && rm -rf ${biobambam2dir} biobambam2.tar.gz \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
