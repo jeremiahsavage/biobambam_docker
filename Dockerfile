@@ -7,11 +7,10 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 RUN apt-get update \
     && apt-get install -y \
        autoconf \
-       git \
+       curl \
        g++ \
        libtool \
        pkg-config \
-       wget \
        zlib1g-dev \
     && apt-get clean \
     && rm -rf /usr/local/* \
