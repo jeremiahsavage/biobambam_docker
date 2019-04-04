@@ -23,7 +23,7 @@ RUN apt-get update \
     && aclocal \
     && autoreconf -i -f \
     && ./configure \
-    && make \
+    && make -j4 \
     && make install \
     && cd ../ \
     && rm -rf ${libmaus2dir} libmaus2.tar.gz \
@@ -33,7 +33,7 @@ RUN apt-get update \
     && export LIBMAUSPREFIX=/usr/local \
     && autoreconf -i -f \
     && ./configure --with-libmaus2=${LIBMAUSPREFIX} \
-    && make \
+    && make -j4 \
     && make install \
     && cd ../ \
     && rm -rf ${biobambam2dir} biobambam2.tar.gz \
