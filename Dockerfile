@@ -6,12 +6,12 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 
 RUN apt-get update \
     && apt-get install -y \
-       autoconf \
-       curl \
-       g++ \
-       libtool \
-       pkg-config \
-       zlib1g-dev \
+        autoconf \
+        curl \
+        g++ \
+        libtool \
+        pkg-config \
+        zlib1g-dev \
     && apt-get clean \
     && rm -rf /usr/local/* \
     && curl --silent https://gitlab.com/german.tischler/libmaus2/repository/archive.tar.gz\?ref\=2.0.610-release-20190328154814 -o libmaus2.tar.gz \
@@ -37,4 +37,12 @@ RUN apt-get update \
     && make install \
     && cd ../ \
     && rm -rf ${biobambam2dir} biobambam2.tar.gz \
+    && apt-get remove --purge -y \
+       autoconf \
+       curl \
+       g++ \
+       libtool \
+       pkg-config \
+       zlib1g-dev \
+    && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
