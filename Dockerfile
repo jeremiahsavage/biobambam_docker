@@ -38,11 +38,11 @@ RUN apt-get update \
     && cd ../ \
     && rm -rf ${biobambam2dir} biobambam2.tar.gz \
     && apt-get remove --purge -y \
-       autoconf \
-       curl \
-       g++ \
-       libtool \
-       pkg-config \
-       zlib1g-dev \
+        autoconf \
+        curl \
+        g++ \
+        libtool \
+        pkg-config \
+        zlib1g-dev \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
