@@ -2,7 +2,7 @@ ARG REPOSITORY=docker.osdc.io
 ARG BUILDER_TAG=2.3.0
 FROM ${REPOSITORY}/ncigdc/base-u22.04-builder:${BUILDER_TAG} AS builder
 
-ENV LIBMAUS_URL=https://gitlab.com/german.tischler/libmaus2/repository/archive.tar.gz\?ref\=2.0.610-release-20190328154814
+ENV LIBMAUS_URL=https://gitlab.com/german.tischler/libmaus2/-/archive/2.0.610-release-20190328154814/libmaus2-2.0.610-release-20190328154814.tar.gz
 ENV BIOBAMBAM_URL=https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.87-release-20180301132713/biobambam2-2.0.87-release-20180301132713.tar.gz
 
 ENV LD_LIBRARY_PATH /usr/local/lib
