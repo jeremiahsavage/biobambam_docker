@@ -1,0 +1,15 @@
+{
+    "template": "git@github.com:NCI-GDC/bio-software-template.git",
+    "commit": "edc121c807074808a30cbf77e29d89cb1320f16a",
+    "context": {
+      "cookiecutter": {
+        "repository_name": "biobambam-docker",
+        "software_name": "biobambam",
+        "software_version": "1.0.0",
+        "commit": "edc121c807074808a30cbf77e29d89cb1320f16a",
+        "_template": "git@github.com:NCI-GDC/bio-software-template.git"
+      }
+    },
+    "directory": null,
+    "checkout": null
+  }
