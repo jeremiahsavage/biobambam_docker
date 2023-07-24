@@ -1,23 +1,22 @@
 ARG REPOSITORY=docker.osdc.io
-ARG BUILDER_TAG=2.2.0
-FROM ${REPOSITORY}/ncigdc/base-u20.04-builder:${BUILDER_TAG} AS builder
+ARG BUILDER_TAG=2.3.0
+FROM ${REPOSITORY}/ncigdc/base-u22.04-builder:${BUILDER_TAG} AS builder
 
-ARG VERSION
-
+ENV LIBMAUS_URL=https://gitlab.com/german.tischler/libmaus2/-/archive/2.0.610-release-20190328154814/libmaus2-2.0.610-release-20190328154814.tar.gz
+ENV BIOBAMBAM_URL=https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.95-release-20190320141403/biobambam2-2.0.95-release-20190320141403.tar.gz
 ENV LD_LIBRARY_PATH /usr/local/lib
 
 RUN apt-get update \
     && apt-get install -y \
         autoconf \
-        automake \
         curl \
         g++ \
         libtool \
         pkg-config \
         zlib1g-dev \
     && apt-get clean \
-    && curl --silent https://gitlab.com/german.tischler/libmaus2/-/archive/2.0.610-release-20190328154814/libmaus2-2.0.610-release-20190328154814.tar.gz -o libmaus2.tar.gz \
-    && curl --silent https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.95-release-20190320141403/biobambam2-2.0.95-release-20190320141403.tar.gz -o biobambam2.tar.gz \
+    && rm -rf /usr/local/* \
+    && curl --silent ${LIBMAUS_URL} -o libmaus2.tar.gz \
     && libmaus2files=$(tar -axvf libmaus2.tar.gz) \
     && libmaus2dir=$(echo ${libmaus2files} | cut -f1 -d" ") \
     && cd ${libmaus2dir} \
@@ -29,6 +28,7 @@ RUN apt-get update \
     && make install \
     && cd ../ \
     && rm -rf ${libmaus2dir} libmaus2.tar.gz \
+    && curl --silent ${BIOBAMBAM_URL} -o biobambam2.tar.gz \
     && biobambam2files=$(tar -axvf biobambam2.tar.gz) \
     && biobambam2dir=$(echo ${biobambam2files} | cut -f1 -d" ") \
     && cd ${biobambam2dir} \
