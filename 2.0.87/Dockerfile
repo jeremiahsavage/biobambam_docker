@@ -22,15 +22,16 @@ RUN apt-get update \
     && libmaus2files=$(tar -axvf libmaus2.tar.gz) \
     && libmaus2dir=$(echo ${libmaus2files} | cut -f1 -d" ") \
     && cd ${libmaus2dir} \
-    && libtoolize \
-    && aclocal \
-    && autoreconf -i -f \
+    # && libtoolize \
+    # && aclocal \
+    # && autoreconf -i -f \
     && ./configure \
-    && make -j4 \
+    && make \
     && make install \
     && cd ../ \
-    && rm -rf ${libmaus2dir} libmaus2.tar.gz \
-    && curl --silent ${BIOBAMBAM_URL} -o biobambam2.tar.gz \
+    && rm -rf ${libmaus2dir} libmaus2.tar.gz
+
+RUN curl --silent ${BIOBAMBAM_URL} -o biobambam2.tar.gz \
     && biobambam2files=$(tar -axvf biobambam2.tar.gz) \
     && biobambam2dir=$(echo ${biobambam2files} | cut -f1 -d" ") \
     && cd ${biobambam2dir} \
