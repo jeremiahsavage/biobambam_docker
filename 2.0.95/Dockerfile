@@ -14,6 +14,7 @@ RUN apt-get update \
         libtool \
         pkg-config \
         zlib1g-dev \
+        libboost-dev \
     && apt-get clean \
     && rm -rf /usr/local/* \
     && curl --silent ${LIBMAUS_URL} -o libmaus2.tar.gz \
