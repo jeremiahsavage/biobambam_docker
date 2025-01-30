@@ -1,0 +1,25 @@
+ARG REPOSITORY=docker.osdc.io
+ARG BUILDER_TAG=3.1.0
+FROM ${REPOSITORY}/ncigdc/amzn2023-builder:${BUILDER_TAG} AS builder
+
+ARG VERSION
+
+ENV URL=https://path/to/file/$VERSION/software-$VERSION.tar.gz
+
+# Example add package step
+RUN dnf install -y x y z
+
+# Example download and compile step
+RUN wget $URL \
+	&& tar xf software-${VERSION}.tar.gz \
+	&& cd software-${VERSION} \
+	&& make \
+	&& mv bin/* /usr/local/bin \
+	&& cd .. \ 
+	&& rm -rf software-${VERSION}
+
+# For a multi-stage build
+
+FROM ${REPOSITORY}/ncigdc/amzn2023:${BUILDER_TAG}
+
+COPY --from=builder /usr/local/* /usr/local/
