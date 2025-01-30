@@ -15,7 +15,7 @@ RUN wget $URL \
 	&& cd software-${VERSION} \
 	&& make \
 	&& mv bin/* /usr/local/bin \
-	&& cd .. \ 
+	&& cd .. \
 	&& rm -rf software-${VERSION}
 
 # For a multi-stage build
