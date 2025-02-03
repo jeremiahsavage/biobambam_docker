@@ -7,7 +7,7 @@ ARG VERSION
 
 ENV URL=https://gitlab.com/german.tischler/biobambam2/repository/archive/v$VERSION.tar.gz
 
-RUN dnf update -y
+RUN dnf update -y \
     && dnf install -y \
         autoconf \
         curl \
