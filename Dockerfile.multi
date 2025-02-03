@@ -10,7 +10,6 @@ ENV URL=https://gitlab.com/german.tischler/biobambam2/repository/archive/v$VERSI
 RUN dnf update -y \
     && dnf install -y \
         autoconf \
-        curl \
         g++ \
         libtool \
         pkgconf \
