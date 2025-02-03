@@ -32,7 +32,7 @@ RUN dnf update -y \
     && biobambam2files=$(tar -axvf biobambam2.tar.gz) \
     && biobambam2dir=$(echo ${biobambam2files} | cut -f1 -d" ") \
     && cd ${biobambam2dir} \
-    && export LIBMAUSPREFIX=/usr/local \
+    && export LIBMAUSPREFIX=/usr/local/lib \
     && autoreconf -i -f \
     && ./configure --with-libmaus2=${LIBMAUSPREFIX} \
     && make -j4 \
