@@ -13,7 +13,7 @@ RUN dnf install -y \
         g++ \
         libtool \
         pkg-config \
-        zlib1g-dev \
+        zlib-devel \
     && dnf clean \
     && rm -rf /usr/local/* \
     && curl --silent https://gitlab.com/german.tischler/libmaus2/repository/archive.tar.gz\?ref\=2.0.610-release-20190328154814 -o libmaus2.tar.gz \
@@ -45,7 +45,7 @@ RUN dnf install -y \
         g++ \
         libtool \
         pkg-config \
-        zlib1g-dev \
+        zlib-devel \
     && dnf autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
