@@ -13,7 +13,7 @@ RUN dnf update -y \
         curl \
         g++ \
         libtool \
-        pkg-config \
+        pkgconf \
         zlib-devel \
     && dnf clean \
     && rm -rf /usr/local/* \
