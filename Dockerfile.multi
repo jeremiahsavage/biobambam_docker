@@ -33,7 +33,7 @@ RUN dnf update -y \
     && biobambam2files=$(tar -axvf biobambam2.tar.gz) \
     && biobambam2dir=$(echo ${biobambam2files} | cut -f1 -d" ") \
     && cd ${biobambam2dir} \
-    && export LIBMAUSPREFIX=/usr/local/lib \
+    && export LIBMAUSPREFIX=/usr/local \
     && autoreconf -i -f \
     && ./configure --with-libmaus2=${LIBMAUSPREFIX} \
     && make -j4 \
@@ -45,8 +45,9 @@ RUN dnf update -y \
         curl \
         g++ \
         libtool \
-        pkg-config \
+        pkgconf \
         zlib-devel \
+        boost-devel \
     && dnf autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
