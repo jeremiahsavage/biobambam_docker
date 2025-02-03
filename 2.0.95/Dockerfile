@@ -6,8 +6,8 @@ ENV LIBMAUS_URL=https://gitlab.com/german.tischler/libmaus2/repository/archive.t
 ENV BIOBAMBAM_URL=https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.95-release-20190320141403/biobambam2-2.0.95-release-20190320141403.tar.gz
 ENV LD_LIBRARY_PATH /usr/local/lib
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN dnf update \
+    && dnf install -y \
         autoconf \
         curl \
         g++ \
@@ -15,7 +15,7 @@ RUN apt-get update \
         pkg-config \
         zlib1g-dev \
         libboost-dev \
-    && apt-get clean \
+    && dnf clean \
     && rm -rf /usr/local/* \
     && curl --silent ${LIBMAUS_URL} -o libmaus2.tar.gz \
     && libmaus2files=$(tar -axvf libmaus2.tar.gz) \
@@ -40,12 +40,12 @@ RUN apt-get update \
     && make install \
     && cd ../ \
     && rm -rf ${biobambam2dir} biobambam2.tar.gz \
-    && apt-get remove --purge -y \
+    && dnf remove --purge -y \
         autoconf \
         curl \
         g++ \
         libtool \
         pkg-config \
         zlib1g-dev \
-    && apt-get autoremove -y \
+    && dnf autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
