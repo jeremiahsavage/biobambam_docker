@@ -16,8 +16,8 @@ RUN dnf update -y \
         zlib-devel \
     && dnf clean all \
     && rm -rf /usr/local/* \
-    && curl --silent -L https://gitlab.com/german.tischler/libmaus2/repository/archive.tar.gz\?ref\=2.0.610-release-20190328154814 -o libmaus2.tar.gz \
-    && curl --silent -L https://gitlab.com/german.tischler/biobambam2/repository/archive.tar.gz\?ref\=2.0.95-release-20190320141403 -o biobambam2.tar.gz \
+    && curl --silent -L https://gitlab.com/german.tischler/libmaus2/-/archive/master/libmaus2-master.tar.gz\?ref\=2.0.610-release-20190328154814 -o libmaus2.tar.gz \
+    && curl --silent -L https://gitlab.com/german.tischler/biobambam2/-/archive/master/biobambam2-master.tar.gz\?ref\=2.0.95-release-20190320141403 -o libmaus2.tar.gz \
     && libmaus2files=$(tar -axvf libmaus2.tar.gz) \
     && libmaus2dir=$(echo ${libmaus2files} | cut -f1 -d" ") \
     && cd ${libmaus2dir} \
