@@ -9,10 +9,13 @@ include:
     file:
       - templates/global/full.yaml
 
+variables:
+  DOCKER_VERSION: 27.4.0
+
 build_dockers:
   stage: build
   services:
-    - docker:20.10.16-dind
+    - docker:${DOCKER_VERSION}-dind
   tags:
     - dind
   before_script:

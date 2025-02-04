@@ -1,4 +1,4 @@
-SOFTWARE := "biobambam"
+SOFTWARE := "biobambam2"
 init: _init-hooks
 
 _init-hooks:

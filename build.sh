@@ -1,6 +1,6 @@
 #!/bin/bash -x
 set -o pipefail
-SOFTWARE="biobambam"
+SOFTWARE="biobambam2"
 
 while getopts b:t: option; do
 	case "${option}" in
