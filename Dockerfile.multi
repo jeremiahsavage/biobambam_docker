@@ -40,7 +40,7 @@ RUN dnf update -y \
     && make install \
     && cd ../ \
     && rm -rf ${biobambam2dir} biobambam2.tar.gz \
-    && dnf remove --purge -y \
+    && dnf remove -y \
         autoconf \
         curl \
         g++ \
